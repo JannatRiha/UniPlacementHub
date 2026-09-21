@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ posting.title }}{% endblock %}
+{% block content %}
+<div class="card shadow-sm"><div class="card-body">
+<h2>{{ posting.title }}</h2>
+<h5>{{ posting.company.company_name }}</h5>
+<p>{{ posting.description }}</p>
+<hr>
+<p><strong>Type:</strong> {{ posting.get_type_display }}</p>
+<p><strong>Minimum CGPA:</strong> {{ posting.min_cgpa }}</p>
+<p><strong>Deadline:</strong> {{ posting.deadline }}</p>
+<p><strong>Positions:</strong> {{ posting.positions }}</p>
+<p><strong>Location:</strong> {{ posting.location }} {% if posting.is_remote %}(Remote){% endif %}</p>
+<p><strong>Departments:</strong> {% for d in posting.departments.all %}{{ d.name }}{% if not forloop.last %}, {% endif %}{% empty %}All departments{% endfor %}</p>
+<p><strong>Skills:</strong> {% for s in posting.skills.all %}<span class="badge text-bg-secondary">{{ s.name }}</span> {% empty %}Not specified{% endfor %}</p>
+{% if user.is_authenticated and user.role_profile.role == "student" and posting.is_open %}
+<form method="post" action="{% url 'apply_to_posting' posting.pk %}">{% csrf_token %}<button class="btn btn-success">Apply Now</button></form>
+{% elif not user.is_authenticated %}<a href="{% url 'login' %}" class="btn btn-primary">Login to Apply</a>{% endif %}
+</div></div>
+{% endblock %}

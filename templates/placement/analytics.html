@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Placement Analytics{% endblock %}
+{% block content %}
+<h2>Placement Analytics</h2>
+<div class="table-responsive"><table class="table table-bordered bg-white">
+<thead><tr><th>Company</th><th>Postings</th><th>Applicants</th><th>Selected</th><th>Selection Rate</th></tr></thead>
+<tbody>
+{% for c in company_stats %}
+<tr><td>{{ c.company_name }}</td><td>{{ c.total_postings }}</td><td>{{ c.total_applicants }}</td><td>{{ c.total_selected }}</td>
+<td>{% if c.total_applicants %}{% widthratio c.total_selected c.total_applicants 100 %}%{% else %}0%{% endif %}</td></tr>
+{% empty %}<tr><td colspan="5">No company data.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}

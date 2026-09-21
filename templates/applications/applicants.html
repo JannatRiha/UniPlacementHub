@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Applicants{% endblock %}
+{% block content %}
+<h2>Applicants — {{ posting.title }}</h2>
+<table class="table table-striped bg-white"><thead><tr><th>Student</th><th>CGPA</th><th>Department</th><th>Status</th><th>Actions</th></tr></thead>
+<tbody>{% for a in applications %}<tr><td>{{ a.student.full_name }}</td><td>{{ a.student.cgpa }}</td><td>{{ a.student.department.name }}</td><td>{{ a.get_status_display }}</td><td>
+<a class="btn btn-sm btn-outline-primary" href="{% url 'change_application_status' a.id 'shortlisted' %}">Shortlist</a>
+<a class="btn btn-sm btn-outline-success" href="{% url 'change_application_status' a.id 'selected' %}">Select</a>
+<a class="btn btn-sm btn-outline-danger" href="{% url 'change_application_status' a.id 'rejected' %}">Reject</a>
+</td></tr>{% empty %}<tr><td colspan="5">No applicants.</td></tr>{% endfor %}</tbody></table>
+{% endblock %}

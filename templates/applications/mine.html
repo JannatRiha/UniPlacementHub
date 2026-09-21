@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}My Applications{% endblock %}
+{% block content %}
+<h2>My Applications</h2>
+<table class="table table-striped bg-white"><thead><tr><th>Posting</th><th>Company</th><th>Status</th><th>Applied</th></tr></thead>
+<tbody>{% for a in applications %}<tr><td><a href="{% url 'posting_detail' a.posting.pk %}">{{ a.posting.title }}</a></td><td>{{ a.posting.company.company_name }}</td><td><span class="badge text-bg-primary">{{ a.get_status_display }}</span></td><td>{{ a.applied_at }}</td></tr>{% empty %}<tr><td colspan="4">No applications yet.</td></tr>{% endfor %}</tbody></table>
+{% endblock %}

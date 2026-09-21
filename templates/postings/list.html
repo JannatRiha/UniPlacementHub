@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Opportunities{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3"><h2>Open Opportunities</h2></div>
+<form class="row g-2 mb-4">
+  <div class="col-md-3"><select name="type" class="form-select"><option value="">All types</option><option value="internship">Internship</option><option value="full-time">Full-time</option></select></div>
+  <div class="col-md-3"><select name="department" class="form-select"><option value="">All departments</option>{% for d in departments %}<option value="{{ d.name }}">{{ d.name }}</option>{% endfor %}</select></div>
+  <div class="col-md-3"><select name="remote" class="form-select"><option value="">All locations</option><option value="1">Remote</option></select></div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">Filter</button></div>
+</form>
+<div class="row g-3">
+{% for p in postings %}
+<div class="col-md-6"><div class="card h-100 shadow-sm"><div class="card-body">
+<h4>{{ p.title }}</h4><p class="text-muted">{{ p.company.company_name }} · {{ p.type }}</p>
+<p>Min CGPA: <strong>{{ p.min_cgpa }}</strong> · Positions: <strong>{{ p.positions }}</strong></p>
+<p>Deadline: {{ p.deadline }} {% if p.is_remote %}· Remote{% endif %}</p>
+<a class="btn btn-outline-primary" href="{% url 'posting_detail' p.pk %}">View Details</a>
+</div></div></div>
+{% empty %}<p>No open postings found.</p>{% endfor %}
+</div>
+{% endblock %}

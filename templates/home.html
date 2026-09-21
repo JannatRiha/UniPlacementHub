@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}UniPlacementHub{% endblock %}
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm">
+  <h1 class="display-5 fw-bold">Smart University Placement Portal</h1>
+  <p class="lead">Connect students, companies and the university placement cell.</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'posting_list' %}">Browse Opportunities</a>
+</div>
+<div class="row g-4">
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><h4>Students</h4><p>Create your profile, find eligible opportunities and track applications.</p></div></div></div>
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><h4>Companies</h4><p>Post internships and jobs and manage applicants.</p></div></div></div>
+  <div class="col-md-4"><div class="card h-100"><div class="card-body"><h4>Placement Cell</h4><p>Verify companies, manage drives and analyze placement statistics.</p></div></div></div>
+</div>
+{% endblock %}

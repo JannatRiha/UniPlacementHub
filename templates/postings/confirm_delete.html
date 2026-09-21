@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card card-body"><h3>Delete {{ posting.title }}?</h3><form method="post">{% csrf_token %}<button class="btn btn-danger">Delete</button> <a class="btn btn-secondary" href="{% url 'company_postings' %}">Cancel</a></form></div>
+{% endblock %}
