@@ -679,12 +679,8 @@ Possible extensions include:
 
 # 🌐 Live Demo
 
-**Live link:** Not deployed yet.
-
-Once deployed, replace this section with:
-
 ```text
-Live Demo: https://your-domain.com
+Live Demo: https://uniplacementhub-riha.mumnur-jannat-riha.chatgpt.site/
 ```
 
 For example:
