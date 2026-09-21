@@ -692,7 +692,7 @@ For example:
 ```markdown
 ## 🌐 Live Demo
 
-[Visit UniPlacementHub](https://your-domain.com)
+[Visit UniPlacementHub][(http://127.0.0.1:8000/)]
 ```
 
 ---
